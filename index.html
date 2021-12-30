@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      <h1 align="center">Code Comparing Tool</h1>
+    <meta charset="utf-8">
+    <title>Repos</title>
+  </head>
+  <body bgcolor="#a9a9a9">
+    <h3>GitHub Repos</h3>
+    <form  method="POST">
+      <input type="text" name="username" value="" required>
+      {% csrf_token %}
+      <input type="submit" name="" value="Get Git Repos">
+    </form>
+    {% if repos %}
+    <ul class="b">
+    {% for repo in repos %}
+        <li><a href="/{{ repo.owner.login }}/{{ repo.name }}/">{{ repo.name }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>
